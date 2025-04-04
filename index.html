@@ -11,31 +11,17 @@
             padding: 0;
             background-color: #f5f5f5;
             color: #333;
-            text-align: center;
-        }
-        .nav {
-            display: flex;
-            justify-content: flex-end;
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-        .nav a {
-            color: #333;
-            text-decoration: none;
-            font-size: 20px;
-            font-weight: bold;
-            cursor: pointer;
         }
         .header {
             display: flex;
             align-items: center;
-            justify-content: center;
             gap: 20px;
             margin-top: 10px;
+            padding-left: 100px;
         }
         .profile-pic {
-            width: 250px;
-            height: 250px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
             object-fit: cover;
         }
@@ -44,29 +30,18 @@
         }
         h1 {
             color: #222;
-            font-size: 32px;
+            font-size: 28px;
             margin: 0;
         }
         h2 {
-            border-bottom: 2px solid #ccc;
-            padding-bottom: 5px;
-            display: inline-block;
-        }
-        .timeline h2 {
             border-bottom: 2px solid #999;
-            width: 100%;
-            padding-bottom: 10px;
-        }
-        .timeline::after {
-            content: "";
+            padding-bottom: 5px;
             display: block;
             width: 100%;
-            height: 2px;
-            background-color: #999;
-            margin-top: 10px;
+            text-align: left;
         }
         p {
-            font-size: 20px;
+            font-size: 16px;
             color: #666;
             margin-top: 10px;
         }
@@ -78,129 +53,31 @@
             margin: 0 5px;
         }
         .social-icons img {
-            width: 30px;
-            height: 30px;
+            width: 25px;
+            height: 25px;
         }
-        .timeline {
+        .content {
             margin-top: 30px;
             text-align: left;
+            max-width: 900px;
+            margin-left: 100px;
         }
-        .contact-form {
-            margin: 20px auto;
-            max-width: 600px;
-            padding: 10px 0;
-            background: none;
-            text-align: center;
+        a {
+            color: #0066cc;
+            text-decoration: none;
+            font-weight: bold;
         }
-        .contact-form h2 {
-            text-align: center;
-            margin: 0 auto;
-            border-bottom: none;
-        }
-        .contact-form input, .contact-form textarea {
-            width: 100%;
-            padding: 15px;
-            margin-top: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 18px;
-            background: white;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            font-family: Arial, sans-serif;
-        }
-        .contact-form textarea {
-            resize: vertical;
-            min-height: 150px;
-        }
-        .contact-form button {
-            width: 100%;
-            padding: 15px;
-            background: #222;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 20px;
-            margin-top: 15px;
-            cursor: pointer;
+        a:hover {
+            text-decoration: underline;
         }
     </style>
-    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    <script>
-        emailjs.init('kf_ygF6DqsAyj_ON1'); // Replace with your EmailJS public key
-
-        function showSection(section) {
-            document.getElementById('about').style.display = section === 'about' ? 'block' : 'none';
-            document.getElementById('connect').style.display = section === 'connect' ? 'block' : 'none';
-        }
-
-        function sendMessage(event) {
-            event.preventDefault();
-
-            const form = event.target;
-            const name = form.querySelector('input[name="name"]').value;
-            const email = form.querySelector('input[name="email"]').value;
-            const message = form.querySelector('textarea[name="message"]').value;
-
-            const templateParams = {
-                from_name: name,
-                from_email: email,
-                message: message
-            };
-
-            console.log("Sending message with params:", templateParams); // Debugging
-
-            emailjs.send('service_7mcsy2r', 'template_jn8w247', templateParams)
-                .then(function(response) {
-                    console.log("EmailJS Response:", response); // Debugging
-                    alert("Message Sent!");
-                    form.reset();
-                }, function(error) {
-                    console.error("EmailJS Error:", error); // Debugging
-                    alert("Failed to send message. Please try again later.");
-                });
-        }
-    </script>
 </head>
 <body>
-    <div class="nav">
-        <a onclick="showSection('about')">About Me</a>
-        <a onclick="showSection('connect')">Connect</a>
-    </div>
-    
-    <div id="about">
-        <div class="header">
-            <img src="pic1.jpg" alt="Your Photo" class="profile-pic">
-            <div class="bio">
-                <h1>Parisa Etemadi</h1>
-                <p>My passions are 🔬 Biotech & 📈 Finance. Might seem a bit odd, but we'll make it work! 🚀</p>
-                <div class="social-icons">
-                    <a href="https://www.linkedin.com/in/parisa-etemadi-325792204/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn"></a>
-                    <a href="https://x.com/parisaetem" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968830.png" alt="X"></a>
-                    <a href="https://www.instagram.com/parisaetem/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram"></a>
-                    <a href="https://github.com/parisaetemadi" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733609.png" alt="GitHub"></a>
-                </div>
-            </div>
-        </div>
-        <div class="timeline">
-            <h2>My career journey</h2>
-            <div class="timeline-item"><h3>2023 - Now</h3><p>I've been working on a biotech startup "Medhesion". We developed therapeutics for patients suffering from post-surgical adhesions.
-                Working with brilliant scientists is always great! Meanwhile I'm studying to do my CFA level I exam. 
-                To stay healthy, I practice jiu jitsu and do workouts! Love books especially old books + movies :)
-
-            </p></div>
-            <div class="timeline-item"><h3>2019 - 2023</h3><p>So I decided to immigrate to Canada. I did my undergrad in neuroscience at University of Calgary. Honestly compared to my 
-                previous experience with medical school, this program wasn't that challenging for me! I had a lot of free time to spend on exploring new topics.
-               For example, during my last year of my undergrad, I really got into finance and investing. Was curious how I could combine finance with biology! Is it even possible? 
-            </p></div>
-            <div class="timeline-item"><h3>2017 - 2018</h3><p>I did well on IRAN national university entrance exam and got into medical school at IRAN university of medical sciences.
-                Soon I realized this program is not for me or at least at that age I wasn't ready for that level of dedication. Plus the educational system disappointed me.
-            I decided to drop out! I'm 19 here.  </p></div>
-        </div>
-    </div>
-    
-    <div id="connect" style="display: none;">
-        <div class="header">
-            <img src="pic1.jpg" alt="Your Photo" class="profile-pic">
+    <div class="header">
+        <img src="pic1.jpg" alt="Your Photo" class="profile-pic">
+        <div class="bio">
+            <h1>Parisa Etemadi</h1>
+            <p>Love the intersection of 🔬 Biotech & 📈 Finance.</p>
             <div class="social-icons">
                 <a href="https://www.linkedin.com/in/parisa-etemadi-325792204/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn"></a>
                 <a href="https://x.com/parisaetem" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968830.png" alt="X"></a>
@@ -208,13 +85,27 @@
                 <a href="https://github.com/parisaetemadi" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733609.png" alt="GitHub"></a>
             </div>
         </div>
-        <form class="contact-form" onsubmit="sendMessage(event)">
-            <h2>Drop Me a Message</h2>
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <textarea name="message" placeholder="Your Message" rows="6" required></textarea>
-            <button type="submit">Send</button>
-        </form>
+    </div>
+
+    <div class="content">
+        <h2>About Me</h2>
+        <p>I love the intersection of <strong>biotech</strong> and <strong>finance</strong>, particularly in accelerating the development of therapeutics.</p>
+        <p>Outside of work, I enjoy reading, physical activities, and movies!</p>
+
+        <h2>Experience</h2>
+        <p>• Currently, I'm working at a biotech startup called <strong>Medhesion</strong>. My supervisor <a href="https://sites.google.com/view/kubeslaboratory/home" target="_blank">Dr. Paul Kubes</a> started this startup at his lab at the University of Calgary. At Medhesion, we develop and test therapeutics for patients suffering from post-surgical adhesions. My role is to test the newly synthesized drugs in vitro in mouse cells.</p>
+        <p>I do a lot of imaging and data analysis. Meanwhile, I study finance to better understand the life sciences ecosystem and the economy in general.</p>
+
+        <p>• During my undergrad, I did research in <a href="https://cumming.ucalgary.ca/labs/reparative-neuroinflammation/home" target="_blank"> Dr Wee Yong</a>'s lab wehere I studied demylinating lesions in animal models of multiple sclerosis.</a></p>
+
+        <h2>Core skills</h2>
+        <p> Confocal microscopy imaging, in vitro exepriments, data analysis, animal surgery, python.</p>
+        <h2>Awards</h2>
+        <p>[2024-2025] - Mitacs accelerate - Awarded to do my one year internship at Medhesion. </p>
+        <p>[Summer 2022] - Alberta MS Network Summer Studentship - Awarded to conduct my research project at Wee Yong Lab.</p>
+        <p> [Summer 2022] - Undergraduate Summer Studentship -  Awarded by Alberta Innovates to conduct my summer research.</p>
+        <p> [Fall 2019] - Presiden's Admission scholarship. Awarded to start my bachelor degree in neuroscience at university of Calgary.</p>
+        </a></p>
     </div>
 </body>
 </html>
